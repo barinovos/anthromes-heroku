@@ -4,6 +4,7 @@ import { Navbar, NavbarText } from './Styled';
 import Constants from '../../constants';
 import canvas from '../../canvas';
 import Zoom from '../Zoom';
+import BottomPanel from '../BottomPanel';
 
 class App extends React.Component {
   canvasId = 'myCanvas';
@@ -12,9 +13,16 @@ class App extends React.Component {
     super(props);
     axios
       .get(Constants.API_URL)
-      .then(resp => canvas.init(this.canvasId, resp.data.images))
+      .then(resp => {
+        canvas.init(this.canvasId, resp.data.images);
+        this.setState({ images: resp.data.images });
+      })
       .catch(err => console.log(err));
   }
+
+  state = {
+    images: null,
+  };
 
   render() {
     return (
@@ -29,6 +37,7 @@ class App extends React.Component {
         </Navbar>
         <canvas id={this.canvasId} />
         <Zoom zoomIn={canvas.zoomIn} zoomOut={canvas.zoomOut} />
+        <BottomPanel images={this.state.images} onImageSelect={image => canvas.moveToPoint(-image.x, -image.y)} />
       </Fragment>
     );
   }

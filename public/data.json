@@ -1,11 +1,13 @@
 {
   "images": [
     {
+      "id": 1,
       "url": "/example.jpg",
       "x": 0,
       "y": 0
     },
     {
+      "id": 2,
       "url": "/example2.jpg",
       "x": 3020,
       "y": 0

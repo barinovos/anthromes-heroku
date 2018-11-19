@@ -10,7 +10,14 @@ export default function connectZoom(canvas, ctx, last, cb) {
   return {
     in: () => zoomBound(3),
     out: () => zoomBound(-3),
+    resetZoom,
   };
+}
+
+function resetZoom(context) {
+  context.translate(0, 0);
+  context.setTransform(1, 0, 0, 1, 0, 0);
+  currentFactor = 1;
 }
 
 function handleScroll(evt) {
