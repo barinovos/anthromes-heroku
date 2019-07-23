@@ -13,15 +13,17 @@ class App extends React.Component {
     super(props);
     axios
       .get(Constants.API_URL)
-      .then(resp => {
-        canvas.init(this.canvasId, resp.data.images);
-        this.setState({ images: resp.data.images });
+      .then(resp => resp.data)
+      .then(({ images, annotations }) => {
+        canvas.init(this.canvasId, images, annotations);
+        this.setState({ images, annotations });
       })
       .catch(err => console.log(err));
   }
 
   state = {
     images: null,
+    annotations: null,
   };
 
   render() {

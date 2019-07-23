@@ -3,14 +3,15 @@ import loadCanvas from './loadCanvas';
 import redraw from './redraw';
 import connectZoom from './zoom';
 import connectEvents from './events';
+import renderAnnotations from './renderAnnotations';
 
 let zoom = { in: () => {}, out: () => {} },
   redrawMapped,
   obj;
 document.body.style.mozUserSelect = document.body.style.webkitUserSelect = document.body.style.userSelect = 'none';
 
-function init(canvasId, data) {
-  obj = loadCanvas(canvasId, data);
+function init(canvasId, images, annotations) {
+  obj = loadCanvas(canvasId, images);
   trackTransforms(obj.ctx);
   redraw(obj.ctx, obj.images, obj.canvas.width, obj.canvas.height);
   const last = {
@@ -21,6 +22,7 @@ function init(canvasId, data) {
   redrawMapped = () => redraw(obj.ctx, obj.images, obj.canvas.width, obj.canvas.height);
   zoom = connectZoom(obj.canvas, obj.ctx, last, redrawMapped);
   connectEvents(obj.canvas, obj.ctx, last, redrawMapped);
+  renderAnnotations(obj.ctx, annotations);
 }
 
 function moveToPoint(x, y) {
