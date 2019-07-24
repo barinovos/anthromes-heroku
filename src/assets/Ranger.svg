@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="165px" height="31px" viewBox="0 0 165 31" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>Ranger 1</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <circle id="path-1" cx="90" cy="10" r="10"></circle>
+        <filter x="-35.0%" y="-45.0%" width="170.0%" height="190.0%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.549019608   0 0 0 0 0.549019608   0 0 0 0 0.549019608  0 0 0 0.3 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feOffset dx="0" dy="-2" in="SourceAlpha" result="shadowOffsetOuter2"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter2" result="shadowBlurOuter2"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.549019608   0 0 0 0 0.549019608   0 0 0 0 0.549019608  0 0 0 0.2 0" type="matrix" in="shadowBlurOuter2" result="shadowMatrixOuter2"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="shadowMatrixOuter2"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="Front-End" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="03_pop-up_desktop" transform="translate(-267.000000, -14.000000)">
+            <g id="Ranger-1" transform="translate(349.500000, 29.500000) rotate(-360.000000) translate(-349.500000, -29.500000) translate(267.000000, 19.000000)">
+                <rect id="Bar" fill="#E6E6E6" x="1" y="6" width="164" height="8" rx="4"></rect>
+                <g id="Elements/Inputs/Ranger/1" transform="translate(0.599691, 0.489806)">
+                    <g id="Ranger">
+                        <rect id="Active" fill="#3C91E6" x="0" y="6" width="100" height="8" rx="4"></rect>
+                        <g id="knob">
+                            <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                            <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,48 +1,49 @@
-import React, { Fragment } from 'react';
-import axios from 'axios';
-import { Navbar, NavbarText } from './Styled';
-import Constants from '../../constants';
-import canvas from '../../canvas';
-import Zoom from '../Zoom';
-import BottomPanel from '../BottomPanel';
+import React, { Fragment } from 'react'
+// import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import Constants from '../../constants'
+import api from '../../utils/api'
+import { MainArea } from '../Common/Styled'
+import Toolbar from '../Toolbar'
+import Canvas from '../Canvas'
+import About from '../About'
+const { API_URL } = Constants
 
 class App extends React.Component {
-  canvasId = 'myCanvas';
-
-  constructor(props) {
-    super(props);
-    axios
-      .get(Constants.API_URL)
-      .then(resp => resp.data)
-      .then(({ images, annotations }) => {
-        canvas.init(this.canvasId, images, annotations);
-        this.setState({ images, annotations });
-      })
-      .catch(err => console.log(err));
+  state = {
+    db: null,
+    showAbout: false,
+    showStore: false,
+    selectedSection: {},
   }
 
-  state = {
-    images: null,
-    annotations: null,
-  };
+  constructor(props) {
+    super(props)
+
+    api.get(API_URL).then(resp => this.setState({ db: resp.data }))
+  }
 
   render() {
+    const { db, showAbout, onShowStore, selectedSection } = this.state
+
     return (
       <Fragment>
-        <Navbar>
-          <div>
-            <NavbarText>Anthromes</NavbarText>
-          </div>
-          <div>
-            <NavbarText>About</NavbarText>
-          </div>
-        </Navbar>
-        <canvas id={this.canvasId} />
-        <Zoom zoomIn={canvas.zoomIn} zoomOut={canvas.zoomOut} />
-        <BottomPanel images={this.state.images} onImageSelect={image => canvas.moveToPoint(-image.x, -image.y)} />
+        <Toolbar
+          activeItemName={selectedSection.name}
+          onShowAbout={() => this.setState({ showAbout: true })}
+          onShowStore={() => this.setState({ onShowStore: true })}
+        />
+        <MainArea>
+          <Canvas
+            db={db}
+            onSectionSelect={selectedSection => this.setState({ selectedSection })}
+            selectedSection={selectedSection}
+          />
+          {showAbout && <About onClose={() => this.setState({ showAbout: false })} />}
+          {onShowStore && <div>Store</div>}
+        </MainArea>
       </Fragment>
-    );
+    )
   }
 }
 
-export default App;
+export default App
