@@ -8,7 +8,7 @@ import constants from '../../constants'
 import { getCanvasItems, getSectionById } from '../../utils/dbHelper'
 import { Area } from './Styled'
 
-const Canvas = ({ db, onSectionSelect, selectedSection }) => {
+const Canvas = ({ db, onSectionSelect, selectedSection, onPinSelect }) => {
   const [zoom, setZoom] = useState(0)
   if (!db) return <div>Loading</div>
 
@@ -28,7 +28,7 @@ const Canvas = ({ db, onSectionSelect, selectedSection }) => {
           zoomLevel={zoom}
         />
       ))}
-      <Pins pins={db.pins} zoomLevel={zoom} onPinSelect={pin => console.log(pin)} />
+      <Pins pins={db.pins} zoomLevel={zoom} onPinSelect={onPinSelect} />
       <Zoom zoomIn={onZoomIn} zoomOut={onZoomOut} />
       <BottomPanel items={items} onSelect={onSectionSelectFromPanel} selectedId={selectedSection.id} />
     </Area>
@@ -39,6 +39,7 @@ Canvas.propTypes = {
   db: PropTypes.object,
   selectedSection: PropTypes.object,
   onSectionSelect: PropTypes.func,
+  onPinSelect: PropTypes.func,
 }
 
 export default Canvas

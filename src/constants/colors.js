@@ -1,5 +1,6 @@
 export default {
   grey: '#3A3A3A',
+  subGrey: '#232323',
   blue: '#00ABDD',
   darkBlue: '#6D878F',
   buttonBg: '#E0F4FD',

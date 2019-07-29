@@ -6,6 +6,7 @@ import { MainArea } from '../Common/Styled'
 import Toolbar from '../Toolbar'
 import Canvas from '../Canvas'
 import About from '../About'
+import Sidebar from '../Sidebar'
 const { API_URL } = Constants
 
 class App extends React.Component {
@@ -14,6 +15,7 @@ class App extends React.Component {
     showAbout: false,
     showStore: false,
     selectedSection: {},
+    activePin: null,
   }
 
   constructor(props) {
@@ -23,7 +25,7 @@ class App extends React.Component {
   }
 
   render() {
-    const { db, showAbout, onShowStore, selectedSection } = this.state
+    const { db, showAbout, onShowStore, selectedSection, activePin } = this.state
 
     return (
       <Fragment>
@@ -37,9 +39,11 @@ class App extends React.Component {
             db={db}
             onSectionSelect={selectedSection => this.setState({ selectedSection })}
             selectedSection={selectedSection}
+            onPinSelect={activePin => this.setState({ activePin })}
           />
           {showAbout && <About onClose={() => this.setState({ showAbout: false })} />}
           {onShowStore && <div>Store</div>}
+          {activePin && <Sidebar pin={activePin} onClose={() => this.setState({ activePin: null })} />}
         </MainArea>
       </Fragment>
     )
