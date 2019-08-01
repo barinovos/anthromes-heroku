@@ -6,3 +6,5 @@ export const calcSizeWithZoom = (val, zoomLevel) =>
     : zoomLevel < 0
     ? Math.floor(val / (1 + Constants.ZOOM_MULTIPLIER * -zoomLevel))
     : val
+
+export const getCurrentZoomPercentage = zoomLevel => calcSizeWithZoom(100, zoomLevel)

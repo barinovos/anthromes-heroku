@@ -1,7 +1,8 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, createRef } from 'react'
 // import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Constants from '../../constants'
 import api from '../../utils/api'
+import { calcInitialScroll, calcScrollToSection } from '../../utils/dbHelper'
 import { MainArea } from '../Common/Styled'
 import Toolbar from '../Toolbar'
 import Canvas from '../Canvas'
@@ -21,7 +22,16 @@ class App extends React.Component {
   constructor(props) {
     super(props)
 
-    api.get(API_URL).then(resp => this.setState({ db: resp.data }))
+    this.areaRef = createRef()
+    api.get(API_URL).then(resp => {
+      this.setState({ db: resp.data })
+      this.areaRef.current.scroll(calcInitialScroll(resp.data))
+    })
+  }
+
+  onSelectSection = (selectedSection, isScrollTo, zoom) => {
+    this.setState({ selectedSection })
+    if (isScrollTo) this.areaRef.current.scroll(calcScrollToSection(selectedSection.canvas, zoom))
   }
 
   render() {
@@ -34,10 +44,10 @@ class App extends React.Component {
           onShowAbout={() => this.setState({ showAbout: true })}
           onShowStore={() => this.setState({ onShowStore: true })}
         />
-        <MainArea>
+        <MainArea ref={this.areaRef}>
           <Canvas
             db={db}
-            onSectionSelect={selectedSection => this.setState({ selectedSection })}
+            onSectionSelect={this.onSelectSection}
             selectedSection={selectedSection}
             onPinSelect={activePin => this.setState({ activePin })}
           />
