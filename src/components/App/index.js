@@ -17,6 +17,7 @@ class App extends React.Component {
     showStore: false,
     selectedSection: {},
     activePin: null,
+    activeImageIndex: -1,
   }
 
   constructor(props) {
@@ -30,25 +31,28 @@ class App extends React.Component {
   }
 
   onSelectSection = (selectedSection, isScrollTo, zoom) => {
-    this.setState({ selectedSection })
+    this.setState({ selectedSection, activeImageIndex: selectedSection.imageIds.length - 1 })
     if (isScrollTo) this.areaRef.current.scroll(calcScrollToSection(selectedSection.canvas, zoom))
   }
 
   render() {
-    const { db, showAbout, onShowStore, selectedSection, activePin } = this.state
+    const { db, activeImageIndex, showAbout, onShowStore, selectedSection, activePin } = this.state
 
     return (
       <Fragment>
         <Toolbar
-          activeItemName={selectedSection.name}
+          activeSection={selectedSection}
+          activeImageIndex={activeImageIndex}
           onShowAbout={() => this.setState({ showAbout: true })}
           onShowStore={() => this.setState({ onShowStore: true })}
+          onChangeTimeline={ev => this.setState({ activeImageIndex: +ev.target.value })}
         />
         <MainArea ref={this.areaRef}>
           <Canvas
             db={db}
             onSectionSelect={this.onSelectSection}
             selectedSection={selectedSection}
+            activeImageIndex={activeImageIndex}
             onPinSelect={activePin => this.setState({ activePin })}
           />
           {showAbout && <About onClose={() => this.setState({ showAbout: false })} />}

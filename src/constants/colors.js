@@ -10,5 +10,5 @@ export default {
   inputBg: '#F3F4F7',
   lightGrey: '#D8D8D8',
   pink: '#d69498',
-  red: '#b6373f'
+  red: '#b6373f',
 }

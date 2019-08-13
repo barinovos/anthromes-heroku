@@ -21,10 +21,14 @@ const ButtonSecondaryStyle = css`
 `
 
 const BasicText = css`
-  font-size: 18px;
-  line-height: 22px;
-  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
   color: ${colors.grey};
+
+  @media (min-width: 768px) {
+    font-size: 18px;
+    line-height: 22px;
+  }
 `
 
 export const Text = styled.div`
@@ -44,10 +48,13 @@ export const TextBlue = styled.div`
 export const LinkText = styled.div`
   ${BasicText};
   cursor: pointer;
-  padding: 10px 20px;
+  padding: 0.55em 1.1em;
   text-decoration: none;
+  white-space: nowrap;
   ${props => props.active && `color: ${colors.mainGrey}`};
-  ${props => props.bold && 'font-weight: 600'} &:hover {
+  ${props => props.bold && 'font-weight: 600'}
+  
+  &:hover {
     color: darkgrey;
   }
 `
