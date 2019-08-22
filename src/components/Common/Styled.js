@@ -21,8 +21,8 @@ const ButtonSecondaryStyle = css`
 `
 
 const BasicText = css`
-  font-size: 14px;
-  line-height: 18px;
+  font-size: 12px;
+  line-height: 16px;
   color: ${colors.grey};
 
   @media (min-width: 768px) {
@@ -50,9 +50,13 @@ export const LinkText = styled.div`
   cursor: pointer;
   padding: 0.55em 1.1em;
   text-decoration: none;
-  white-space: nowrap;
-  ${props => props.active && `color: ${colors.mainGrey}`};
-  ${props => props.bold && 'font-weight: 600'}
+  flex-basis: ${props => props.flexBasis || 'auto'};
+  font-weight: ${props => props.bold ? '600' : 'normal'};
+  
+  @media (min-width: 768px) {
+    white-space: nowrap;
+    flex-basis: auto;
+  }
   
   &:hover {
     color: darkgrey;
@@ -91,4 +95,20 @@ export const Image = styled.img`
   left: ${props => props.left || 0}px;
   user-select: none;
   ${props => props.isSelected && ActiveImage};
+`
+
+export const MobileView = styled.div`
+  display: block;
+  
+  @media (min-width: 768px) {
+    display: none;
+  }
+`
+
+export const DesktopView = styled.div`
+  display: none;
+  
+  @media (min-width: 768px) {
+    display: block;
+  }
 `

@@ -21,7 +21,7 @@ const Canvas = ({ db, onSectionSelect, selectedSection, onPinSelect, activeImage
   const canvasSize = calcCanvasSize(db.sections, zoom)
 
   return (
-    <Area onClick={() => onSectionSelect({})} width={canvasSize.width} height={canvasSize.height}>
+    <Area onClick={() => onSectionSelect(null)} width={canvasSize.width} height={canvasSize.height}>
       {items.map(item => (
         <CanvasImage
           item={item}

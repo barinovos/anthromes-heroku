@@ -1,28 +1,40 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Wrapper, LinksArea, Logo } from './Styled'
-import { LinkText } from '../Common/Styled'
+import { Wrapper, LinksArea, Logo, Slider } from './Styled'
+import { LinkText, MobileView, DesktopView } from '../Common/Styled'
+import MenuButton from './MenuButton'
 import LogoSrc from '../../assets/logo.svg'
 
 const Toolbar = ({ activeSection = {}, activeImageIndex, onShowAbout, onShowStore, onChangeTimeline }) => (
   <Wrapper>
-    <LinksArea>
+    <LinksArea withMargin>
       <Logo src={LogoSrc} alt="Paint.garden" />
-      {activeSection.id && <LinkText bold>{activeSection.name}</LinkText>}
       {activeSection.id && (
-        <input
-          type="range"
+        <LinkText bold flexBasis="50%">
+          {activeSection.name}
+        </LinkText>
+      )}
+      {activeSection.id && (
+        <Slider
+          width={[150, 200]}
           value={activeImageIndex}
           max={activeSection.imageIds.length - 1}
           onChange={onChangeTimeline}
-          style={{ marginLeft: 20 }}
         />
       )}
     </LinksArea>
-    <LinksArea>
-      <LinkText onClick={onShowAbout}>About</LinkText>
-      <LinkText onClick={onShowStore}>Store</LinkText>
-    </LinksArea>
+    <DesktopView>
+      <LinksArea>
+        <LinkText onClick={onShowAbout}>About</LinkText>
+        <LinkText onClick={onShowStore}>Store</LinkText>
+      </LinksArea>
+    </DesktopView>
+    <MobileView>
+      <MenuButton>
+        <LinkText onClick={onShowAbout}>About</LinkText>
+        <LinkText onClick={onShowStore}>Store</LinkText>
+      </MenuButton>
+    </MobileView>
   </Wrapper>
 )
 

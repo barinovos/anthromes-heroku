@@ -1,15 +1,18 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Wrapper, Button, Value } from './Styled'
+import { Wrapper, Buttons, ButtonItem, Button, Value, Divider } from './Styled'
 
 const Zoom = ({ zoomIn, zoomOut, value }) => (
   <Wrapper onClick={ev => ev.stopPropagation()}>
-    <Button onClick={zoomIn} top>
-      +
-    </Button>
-    <Button onClick={zoomOut} bottom>
-      -
-    </Button>
+    <Buttons>
+      <Button onClick={zoomIn} top>
+        <ButtonItem top />
+      </Button>
+      <Button onClick={zoomOut} bottom>
+        <ButtonItem />
+      </Button>
+      <Divider/>
+    </Buttons>
     <Value>{value}%</Value>
   </Wrapper>
 )

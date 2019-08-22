@@ -8,6 +8,7 @@ import Toolbar from '../Toolbar'
 import Canvas from '../Canvas'
 import About from '../About'
 import Sidebar from '../Sidebar'
+import Onboarding from '../Onboarding'
 const { API_URL } = Constants
 
 class App extends React.Component {
@@ -18,6 +19,7 @@ class App extends React.Component {
     selectedSection: {},
     activePin: null,
     activeImageIndex: -1,
+    showOnboarding: true,
   }
 
   constructor(props) {
@@ -31,12 +33,13 @@ class App extends React.Component {
   }
 
   onSelectSection = (selectedSection, isScrollTo, zoom) => {
+    if (!selectedSection) return this.setState({ selectedSection: {}, activeImageIndex: -1 })
     this.setState({ selectedSection, activeImageIndex: selectedSection.imageIds.length - 1 })
     if (isScrollTo) this.areaRef.current.scroll(calcScrollToSection(selectedSection.canvas, zoom))
   }
 
   render() {
-    const { db, activeImageIndex, showAbout, onShowStore, selectedSection, activePin } = this.state
+    const { db, activeImageIndex, showAbout, onShowStore, selectedSection, activePin, showOnboarding } = this.state
 
     return (
       <Fragment>
@@ -58,6 +61,7 @@ class App extends React.Component {
           {showAbout && <About onClose={() => this.setState({ showAbout: false })} />}
           {onShowStore && <div>Store</div>}
           {activePin && <Sidebar pin={activePin} onClose={() => this.setState({ activePin: null })} />}
+          {showOnboarding && <Onboarding onClose={() => this.setState({ showOnboarding: false })} />}
         </MainArea>
       </Fragment>
     )
