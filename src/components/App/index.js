@@ -18,7 +18,7 @@ class App extends React.Component {
     showStore: false,
     selectedSection: {},
     activePin: null,
-    activeImageIndex: -1,
+    activeImageIndexes: {},
     showOnboarding: true,
   }
 
@@ -33,29 +33,45 @@ class App extends React.Component {
   }
 
   onSelectSection = (selectedSection, isScrollTo, zoom) => {
-    if (!selectedSection) return this.setState({ selectedSection: {}, activeImageIndex: -1 })
-    this.setState({ selectedSection, activeImageIndex: selectedSection.imageIds.length - 1 })
+    if (!selectedSection) return this.setState({ selectedSection: {} })
+    const { activeImageIndexes } = this.state
+    // check for not set up index
+    const activeImageIndex =
+      activeImageIndexes[selectedSection.id] === undefined
+        ? selectedSection.imageIds.length - 1
+        : activeImageIndexes[selectedSection.id]
+    this.setState({
+      selectedSection,
+      activeImageIndexes: { ...activeImageIndexes, [selectedSection.id]: activeImageIndex },
+    })
     if (isScrollTo) this.areaRef.current.scroll(calcScrollToSection(selectedSection.canvas, zoom))
   }
 
+  onChangeActiveImageIndex = ev => {
+    const { selectedSection, activeImageIndexes } = this.state
+    this.setState({
+      activeImageIndexes: { ...activeImageIndexes, [selectedSection.id]: +ev.target.value },
+    })
+  }
+
   render() {
-    const { db, activeImageIndex, showAbout, onShowStore, selectedSection, activePin, showOnboarding } = this.state
+    const { db, activeImageIndexes, showAbout, onShowStore, selectedSection, activePin, showOnboarding } = this.state
 
     return (
       <Fragment>
         <Toolbar
           activeSection={selectedSection}
-          activeImageIndex={activeImageIndex}
+          activeImageIndex={activeImageIndexes[selectedSection.id]}
           onShowAbout={() => this.setState({ showAbout: true })}
           onShowStore={() => this.setState({ onShowStore: true })}
-          onChangeTimeline={ev => this.setState({ activeImageIndex: +ev.target.value })}
+          onChangeTimeline={this.onChangeActiveImageIndex}
         />
         <MainArea ref={this.areaRef}>
           <Canvas
             db={db}
             onSectionSelect={this.onSelectSection}
-            selectedSection={selectedSection}
-            activeImageIndex={activeImageIndex}
+            selectedSectionId={selectedSection.id}
+            activeImageIndexes={activeImageIndexes}
             onPinSelect={activePin => this.setState({ activePin })}
           />
           {showAbout && <About onClose={() => this.setState({ showAbout: false })} />}

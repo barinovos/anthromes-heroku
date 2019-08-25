@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Wrapper, LinksArea, Logo, Slider } from './Styled'
-import { LinkText, MobileView, DesktopView } from '../Common/Styled'
+import { Wrapper, LinksArea, Logo } from './Styled'
+import { LinkText, MobileView, DesktopView, Slider } from '../Common/Styled'
 import MenuButton from './MenuButton'
 import LogoSrc from '../../assets/logo.svg'
 

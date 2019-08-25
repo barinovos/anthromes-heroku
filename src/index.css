@@ -5,7 +5,7 @@ body {
   font-size: 18px;
   line-height: 22px;
   height: 100%;
-  font-family: 'Major Mono Display', monospace;
+  font-family: 'quiroh', 'Helvetica Neue', sans-serif;
 }
 
 #root {

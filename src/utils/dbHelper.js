@@ -1,7 +1,7 @@
 import api from './api'
 import { calcSizeWithZoom } from './calcZoom'
 
-export const getCanvasItems = (db, selectedSection, activeImageIndex) => {
+export const getCanvasItems = (db, activeImageIndexes) => {
   const images = db.images
   return db.sections
     .filter(s => Boolean(s.canvas))
@@ -9,9 +9,7 @@ export const getCanvasItems = (db, selectedSection, activeImageIndex) => {
       id,
       url: api.getImageUrl(
         images.find(
-          im =>
-            im.id ===
-            imageIds[activeImageIndex > -1 && selectedSection.id === id ? activeImageIndex : imageIds.length - 1],
+          im => im.id === imageIds[activeImageIndexes[id] !== undefined ? activeImageIndexes[id] : imageIds.length - 1],
         ).filePath,
       ),
       ...canvas,

@@ -7,7 +7,7 @@ const About = ({ onClose }) => (
   <Wrapper>
     <ContentWrapper>
       <b>Anthromes</b>
-      <p>
+      <p style={{ marginTop: '1em' }}>
         An Anthrome describe the terrestrial biosphere in its contemporary, human-altered form using global ecosystem
         units defined by global patterns of sustained direct human interaction with ecosystems.
       </p>

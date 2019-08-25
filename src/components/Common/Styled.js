@@ -51,13 +51,13 @@ export const LinkText = styled.div`
   padding: 0.55em 1.1em;
   text-decoration: none;
   flex-basis: ${props => props.flexBasis || 'auto'};
-  font-weight: ${props => props.bold ? '600' : 'normal'};
-  
+  font-weight: ${props => (props.bold ? '600' : 'normal')};
+
   @media (min-width: 768px) {
     white-space: nowrap;
     flex-basis: auto;
   }
-  
+
   &:hover {
     color: darkgrey;
   }
@@ -99,7 +99,7 @@ export const Image = styled.img`
 
 export const MobileView = styled.div`
   display: block;
-  
+
   @media (min-width: 768px) {
     display: none;
   }
@@ -107,8 +107,136 @@ export const MobileView = styled.div`
 
 export const DesktopView = styled.div`
   display: none;
-  
+
   @media (min-width: 768px) {
     display: block;
+  }
+`
+
+const sliderHeight = 7
+const thumbSize = 17
+
+export const Slider = styled.input.attrs({ type: 'range' })`
+  border: none;
+  width: ${props => props.width[0] || 140}px;
+  flex-basis: 50%;
+  -webkit-appearance: none;
+  cursor: pointer;
+  outline: none;
+
+  @media (min-width: 768px) {
+    width: ${props => props.width[1] || 200}px;
+    flex-basis: auto;
+    margin: 0 1.2em;
+  }
+
+  &::-webkit-slider-runnable-track {
+    width: 100%;
+    height: ${props => props.height || sliderHeight}px;
+    background: ${colors.blue};
+    border: none;
+    border-radius: ${props => props.height || sliderHeight}px;
+    cursor: pointer;
+  }
+
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: none;
+    height: ${thumbSize}px;
+    width: ${thumbSize}px;
+    border-radius: 50%;
+    background: ${colors.white};
+    margin-top: -5px;
+    cursor: pointer;
+    box-shadow: 0 0 2px ${colors.darkGrey};
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:focus::-webkit-slider-runnable-track {
+    outline: none;
+  }
+
+  &::-moz-range-track {
+    width: 100%;
+    height: ${props => props.height || sliderHeight}px;
+    background: ${colors.lightGrey};
+    border: none;
+    border-radius: ${props => props.height || sliderHeight}px;
+    outline: none;
+  }
+
+  &::-moz-range-thumb {
+    border: none;
+    height: ${thumbSize}px;
+    width: ${thumbSize}px;
+    border-radius: 50%;
+    background: ${colors.white};
+    box-shadow: 0 0 2px ${colors.darkGrey};
+    cursor: pointer;
+  }
+
+  &::-moz-range-progress {
+    background: ${colors.blue};
+    outline: none;
+  }
+
+  &:-moz-focusring {
+    outline: 1px solid white;
+    outline-offset: -1px;
+  }
+
+  &:focus::-moz-range-track {
+    background: #ccc;
+    outline: none;
+  }
+
+  &::-ms-track {
+    width: 100%;
+    height: ${props => props.height || sliderHeight}px;
+
+    /*remove bg colour from the track, we'll use ms-fill-lower and ms-fill-upper instead */
+    background: transparent;
+
+    /*leave room for the larger thumb to overflow with a transparent border */
+    border-color: transparent;
+    border-width: 6px 0;
+
+    /*remove default tick marks*/
+    color: transparent;
+  }
+
+  &::-ms-fill-lower {
+    background: ${colors.blue};
+    border-radius: 10px;
+  }
+
+  &::-ms-fill-upper {
+    background: ${colors.superLightGrey};
+    border-radius: 10px;
+  }
+
+  &::-ms-thumb {
+    border: none;
+    height: ${thumbSize}px;
+    width: ${thumbSize}px;
+    border-radius: 50%;
+    background: ${colors.white};
+    box-shadow: 0 0 2px ${colors.darkGrey};
+    cursor: pointer;
+  }
+
+  &:focus::-ms-fill-lower {
+    background: ${colors.blue};
+  }
+
+  &:focus::-ms-fill-upper {
+    background: #ccc;
+  }
+
+  &::-ms-tooltip {
+    display: none;
   }
 `
