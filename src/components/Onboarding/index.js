@@ -8,9 +8,11 @@ import wizard from '../../assets/wizard.svg'
 const Onboarding = ({ onClose }) => {
   return (
     <Wrapper onClick={onClose}>
-      <BigText>Paint.garden is one big canvas, scroll anywhere within and find strange new things.</BigText>
-      <img src={wizard} alt={'Wizard'} />
       <BigText>
+        <Bold>Paint.garden</Bold> is one big canvas, scroll anywhere within and find <Bold>strange new things.</Bold>
+      </BigText>
+      <img src={wizard} alt={'Wizard'} />
+      <BigText top>
         <Slider defaultValue={100} width={[100, 150]} />
         <Bold>The Timeline:</Bold> See the history of each section.
       </BigText>

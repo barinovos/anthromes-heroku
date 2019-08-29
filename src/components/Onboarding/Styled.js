@@ -33,11 +33,17 @@ const bottomCss = css`
   }
 `
 
+const topCss = css`
+  position: absolute;
+  top: 0;
+`
+
 export const BigText = styled.p`
   margin: 0.5em 0;
   text-align: center;
 
   ${props => props.bottom && bottomCss}
+  ${props => props.top && topCss}
 `
 
 export const Bold = styled.span`
