@@ -1,14 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Wrapper, Text, Image, Heading, TextZone, CloseZone, CartZone, Medium, TopZone, NoImage } from './Styled'
-import api from '../../utils/api'
+// import api from '../../utils/api'
 import close from '../../assets/close.svg'
 import cart from '../../assets/shopping-cart.svg'
 
 const Sidebar = ({ pin, onClose }) => (
   <Wrapper>
     {pin.imageUrl ? (
-      <Image src={api.getImageUrl(pin.imageUrl)} alt={pin.headline} />
+      <Image src={pin.imageUrl} alt={pin.headline} />
     ) : (
       <NoImage>No image provided</NoImage>
     )}
