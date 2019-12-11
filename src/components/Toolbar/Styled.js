@@ -24,6 +24,20 @@ export const LinksArea = styled.div`
     text-decoration: none;
   }
 `
+export const LinksAreaOnboarding = styled.div`
+  display: flex;
+  z-index: 1111 !important;
+  height: 500%;
+  align-items: center;
+  background-color: white;
+  padding-left: 1em;
+  border-radius: 3px;
+  ${props => props.withMargin && 'margin-right: 1em'};
+
+  & > a {
+    text-decoration: none;
+  }
+`
 
 export const Logo = styled.img`
   display: none;
