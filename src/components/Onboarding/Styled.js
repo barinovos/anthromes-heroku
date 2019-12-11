@@ -62,6 +62,10 @@ export const PinIcon = styled.img`
   position: relative;
   top: 0.25em;
 `
+const bottomOverlay = css`
+  margin-bottom: 65px;
+`
+
 export const OverlayDiv = styled.div`
   position: fixed;
   top: 0;
@@ -74,8 +78,8 @@ export const OverlayDiv = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  font-size: 0.9rem;
   padding: 0 1.5em;
+  ${props => props.bottom && bottomOverlay}
 `
 export const PageNumber = styled.p`
   margin-top: 8px;
@@ -91,10 +95,10 @@ export const Pagination = styled.span`
   padding: 0.6em;
   margin-right: 1em;
   border-radius: 3px;
-  border: 1px solid black;
+  border: 1px solid gray;
+  font-size: 0.7rem;
 `
 export const OnboardingTwoModal = styled.div`
-  display: flex;
   z-index: 1111 !important;
   padding-bottom: 2rem;
   align-items: center;
@@ -102,12 +106,21 @@ export const OnboardingTwoModal = styled.div`
   padding-left: 1em;
   border-radius: 3px;
 `
+
+const bottomModal = css`
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+`
+
 export const OnboardingThreeModal = styled.div`
-  display: fixed;
+  position: fixed;
+  bottom: 0;
   z-index: 1111 !important;
-  padding-bottom: 2rem;
   align-items: center;
   background-color: white;
-  padding-left: 1em;
   border-radius: 3px;
+  margin-bottom: 65px;
+  width: 280px;
+  height: 150px;
+  ${props => props.bottom && bottomModal}
 `

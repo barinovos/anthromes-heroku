@@ -17,6 +17,7 @@ export const InnerWrapper = styled.div`
   align-items: center;
   background: white;
   box-shadow: 0 2px 7px lightgrey;
+  z-index: 11111;
 `
 
 export const Icon = styled.img`

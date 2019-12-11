@@ -5,29 +5,35 @@ import { Wrapper, BigText, Bold, PageNumber, NumberText, Pagination, OnboardingT
 const OnboardingThree = ({ onClose, onBack }) => {
   return (
     <Wrapper>
-      <OnboardingThreeModal>
-        <BigText bottom>
-          <Bold>Gallery:</Bold> Click here If you want to jump between each seperate sections
-          <PageNumber>
-            <NumberText>2</NumberText>
-          </PageNumber>
-          <Pagination onClick={onClose}>Skip</Pagination>
-          <Pagination
-            onClick={() => {
-              onClose()
-              onBack()
-            }}
-          >
-            Back
-          </Pagination>
-          <Pagination
-            onClick={() => {
-              onClose()
-            }}
-          >
-            Next
-          </Pagination>
-        </BigText>
+      <OnboardingThreeModal bottom>
+        <div
+          style={{
+            flexDirection: 'row',
+          }}
+        >
+          <BigText>
+            <Bold>Gallery:</Bold> Click here If you want to jump between each seperate sections
+            <PageNumber>
+              <NumberText>3</NumberText>
+            </PageNumber>
+            <Pagination onClick={onClose}>Skip</Pagination>
+            <Pagination
+              onClick={() => {
+                onClose()
+                onBack()
+              }}
+            >
+              Back
+            </Pagination>
+            <Pagination
+              onClick={() => {
+                onClose()
+              }}
+            >
+              Next
+            </Pagination>
+          </BigText>
+        </div>
       </OnboardingThreeModal>
     </Wrapper>
   )

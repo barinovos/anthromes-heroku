@@ -92,7 +92,7 @@ class App extends React.Component {
             onBack={() => this.setState({ showOnboardingTwo: true })}
           />
         )}
-        {showOnboarding || showOnboardingTwo || showOnboardingThree ? <Overlay /> : null}
+        {showOnboarding || showOnboardingTwo ? <Overlay /> : showOnboardingThree ? <Overlay bottom /> : null}
         <Toolbar
           activeSection={selectedSection}
           activeImageIndex={activeImageIndexes[selectedSection.id]}

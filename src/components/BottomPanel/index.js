@@ -11,7 +11,13 @@ const BottomPanel = ({ items, onSelect, selectedId }) => {
         <Fragment>
           <PreviewArea>
             {items.map(({ url, id }) => (
-              <Thumb src={url} key={id} onClick={() => onSelect(id)} selected={selectedId === id} />
+              <Thumb
+                src={url}
+                key={id}
+                onClick={() => onSelect(id)}
+                selected={selectedId === id}
+                style={{ zIndex: 22222 }}
+              />
             ))}
           </PreviewArea>
         </Fragment>

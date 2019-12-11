@@ -13,7 +13,7 @@ const OnboardingTwo = ({ onClose, onBack, onNext }) => {
           }}
         >
           <BigText>
-            <PinIcon src={pin} alt={''} />
+            <PinIcon src={pin} alt={''} style={{ padding: 2, border: '2px solid red' }} />
             <Bold>Annotation:</Bold> click to see more detail about this area.
             <PageNumber>
               <NumberText>2</NumberText>
