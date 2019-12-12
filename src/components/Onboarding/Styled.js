@@ -110,6 +110,22 @@ export const OnboardingTwoModal = styled.div`
   box-shadow: 3px 3px 9px 3px rgba(135, 135, 135, 0.5);
 `
 
+export const OnboardingFourModal = styled.div`
+  z-index: 1111 !important;
+  padding-bottom: 2rem;
+  align-items: center;
+  background-color: white;
+  padding-left: 1em;
+  border-radius: 3px;
+  -moz-box-shadow: 3px 3px 9px 3px rgba(135, 135, 135, 0.5);
+  -webkit-box-shadow: 3px 3px 9px 3px rgba(135, 135, 135, 0.5);
+  box-shadow: 3px 3px 9px 3px rgba(135, 135, 135, 0.5);
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+`
+
 const bottomModal = css`
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
@@ -164,6 +180,9 @@ export const OnboardingOneModal = styled.div`
     padding-right: 1.85em;
     padding-top: 0.45em;
   }
+  @media (max-width: 375px) {
+    height: 30%;
+  }
 `
 
 export const Logo = styled.img`
@@ -173,4 +192,12 @@ export const Logo = styled.img`
     display: block;
     padding-left: 1em;
   }
+`
+export const Wizard = styled.img`
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 60%;
+  margin-left: auto;
+  margin-right: auto;
 `

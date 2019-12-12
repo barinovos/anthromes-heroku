@@ -11,6 +11,7 @@ import Sidebar from '../Sidebar'
 import OnboardingOne from '../Onboarding/onboarding1'
 import OnboardingTwo from '../Onboarding/onboarding2'
 import OnboardingThree from '../Onboarding/onboarding3'
+import OnboardingFour from '../Onboarding/onboarding4'
 import Overlay from '../Onboarding/overlay'
 const { API_URL } = Constants
 
@@ -24,6 +25,7 @@ class App extends React.Component {
     showOnboarding: true,
     showOnboardingTwo: false,
     showOnboardingThree: false,
+    showOnboardingFour: false,
   }
 
   constructor(props) {
@@ -66,6 +68,7 @@ class App extends React.Component {
       showOnboarding,
       showOnboardingTwo,
       showOnboardingThree,
+      showOnboardingFour,
       showAbout,
       selectedSection,
       activePin,
@@ -93,9 +96,20 @@ class App extends React.Component {
           <OnboardingThree
             onClose={() => this.setState({ showOnboardingThree: false })}
             onBack={() => this.setState({ showOnboardingTwo: true })}
+            onNext={() => this.setState({ showOnboardingFour: true })}
           />
         )}
-        {showOnboarding || showOnboardingTwo ? <Overlay /> : showOnboardingThree ? <Overlay bottom /> : null}
+        {showOnboardingFour && (
+          <OnboardingFour
+            onClose={() => this.setState({ showOnboardingFour: false })}
+            onBack={() => this.setState({ showOnboardingThree: true })}
+          />
+        )}
+        {showOnboarding || showOnboardingTwo || showOnboardingFour ? (
+          <Overlay />
+        ) : showOnboardingThree ? (
+          <Overlay bottom />
+        ) : null}
         <Toolbar
           activeSection={selectedSection}
           activeImageIndex={activeImageIndexes[selectedSection.id]}

@@ -1,20 +1,30 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Wrapper, BigText, Bold, PageNumber, NumberText, Pagination, OnboardingThreeModal } from './Styled'
+import { Wrapper, BigText, Bold, PageNumber, NumberText, Pagination, OnboardingFourModal, Wizard } from './Styled'
+import WizardSrc from '../../assets/wizard.svg'
 
-const OnboardingThree = ({ onClose, onBack, onNext }) => {
+const OnboardingFour = ({ onClose, onBack }) => {
   return (
     <Wrapper>
-      <OnboardingThreeModal bottom>
+      <OnboardingFourModal bottom>
         <div
           style={{
             flexDirection: 'row',
           }}
         >
+          <div
+            style={{
+              width: '100%',
+              alignContent: 'center',
+            }}
+          >
+            <Wizard src={WizardSrc} alt="Paint.garden" />
+          </div>
           <BigText>
-            <Bold>Gallery:</Bold> Click here If you want to jump between each seperate sections
+            <Bold>Paint.garden</Bold> is one big canvas, scroll anywhere within and find{' '}
+            <Bold>strange new things.</Bold>
             <PageNumber>
-              <NumberText>3</NumberText>
+              <NumberText>4</NumberText>
             </PageNumber>
             <Pagination onClick={onClose}>Done</Pagination>
             <Pagination
@@ -27,23 +37,22 @@ const OnboardingThree = ({ onClose, onBack, onNext }) => {
             </Pagination>
             <Pagination
               onClick={() => {
-                onNext()
                 onClose()
               }}
+              style={{ color: 'gray' }}
             >
               Next
             </Pagination>
           </BigText>
         </div>
-      </OnboardingThreeModal>
+      </OnboardingFourModal>
     </Wrapper>
   )
 }
 
-OnboardingThree.propTypes = {
+OnboardingFour.propTypes = {
   onClose: PropTypes.func.isRequired,
   onBack: PropTypes.func.isRequired,
-  onNext: PropTypes.func.isRequired,
 }
 
-export default OnboardingThree
+export default OnboardingFour
