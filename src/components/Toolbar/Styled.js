@@ -32,13 +32,18 @@ export const LinksAreaOnboarding = styled.div`
   align-items: center;
   background-color: white;
   border-radius: 3px;
+  padding-left: 1em;
+  padding-top: 0.45em;
 
   & > a {
     text-decoration: none;
   }
   @media (max-width: 768px) {
     width: 100%;
-    height: 30%;
+    height: 25%;
+    padding-left: 0;
+    padding-right: 1em;
+    padding-top: 0.4em;
   }
 `
 
