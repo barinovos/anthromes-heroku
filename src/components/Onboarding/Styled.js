@@ -144,7 +144,7 @@ export const OnboardingOneModal = styled.div`
   top: 0;
   left: 0;
   height: 20%;
-  width: 60%;
+  width: 545px;
   align-items: center;
   background-color: white;
   border-radius: 3px;

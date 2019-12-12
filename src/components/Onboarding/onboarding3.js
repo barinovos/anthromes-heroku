@@ -16,7 +16,7 @@ const OnboardingThree = ({ onClose, onBack }) => {
             <PageNumber>
               <NumberText>3</NumberText>
             </PageNumber>
-            <Pagination onClick={onClose}>Skip</Pagination>
+            <Pagination onClick={onClose}>Done</Pagination>
             <Pagination
               onClick={() => {
                 onClose()
