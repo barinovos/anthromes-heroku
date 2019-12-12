@@ -29,6 +29,7 @@ const OnboardingThree = ({ onClose, onBack }) => {
               onClick={() => {
                 onClose()
               }}
+              style={{ color: 'gray' }}
             >
               Next
             </Pagination>

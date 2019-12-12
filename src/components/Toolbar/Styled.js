@@ -18,24 +18,27 @@ export const LinksArea = styled.div`
   display: flex;
   height: 100%;
   align-items: center;
-  ${props => props.withMargin && 'margin-right: 1em'};
 
   & > a {
     text-decoration: none;
   }
 `
 export const LinksAreaOnboarding = styled.div`
-  display: flex;
-  z-index: 1111 !important;
-  height: 500%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 20%;
+  width: 60%;
   align-items: center;
   background-color: white;
-  padding-left: 1em;
   border-radius: 3px;
-  ${props => props.withMargin && 'margin-right: 1em'};
 
   & > a {
     text-decoration: none;
+  }
+  @media (max-width: 768px) {
+    width: 100%;
+    height: 30%;
   }
 `
 
@@ -44,6 +47,7 @@ export const Logo = styled.img`
 
   @media (min-width: 768px) {
     display: block;
+    padding-left: 1em;
   }
 `
 

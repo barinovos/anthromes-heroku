@@ -75,9 +75,12 @@ class App extends React.Component {
       <Fragment>
         {showOnboarding && (
           <OnboardingOne
+            activeSection={selectedSection}
+            activeImageIndex={activeImageIndexes[selectedSection.id]}
+            onChangeTimeline={this.onChangeActiveImageIndex}
             onClose={() => this.setState({ showOnboarding: false })}
             onNext={() => this.setState({ showOnboardingTwo: true })}
-          />
+          ></OnboardingOne>
         )}
         {showOnboardingTwo && (
           <OnboardingTwo
