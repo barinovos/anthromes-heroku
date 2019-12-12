@@ -1,14 +1,23 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Wrapper, BigText, Bold, PageNumber, NumberText, Pagination } from './Styled'
+import {
+  Wrapper,
+  BigText,
+  Bold,
+  PageNumber,
+  NumberText,
+  Pagination,
+  OnboardingOneModal,
+  Logo,
+  LinksArea,
+} from './Styled'
 import { LinkText, Slider } from '../Common/Styled'
 import LogoSrc from '../../assets/logo.svg'
-import { LinksAreaOnboarding, Logo, LinksArea } from '../Toolbar/Styled'
 
 const OnboardingOne = ({ activeSection = {}, activeImageIndex, onChangeTimeline, onClose, onNext }) => {
   return (
     <Wrapper>
-      <LinksAreaOnboarding>
+      <OnboardingOneModal>
         <div
           style={{
             flexDirection: 'row',
@@ -47,7 +56,7 @@ const OnboardingOne = ({ activeSection = {}, activeImageIndex, onChangeTimeline,
             </Pagination>
           </BigText>
         </div>
-      </LinksAreaOnboarding>
+      </OnboardingOneModal>
     </Wrapper>
   )
 }

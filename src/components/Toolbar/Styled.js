@@ -23,29 +23,6 @@ export const LinksArea = styled.div`
     text-decoration: none;
   }
 `
-export const LinksAreaOnboarding = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 20%;
-  width: 60%;
-  align-items: center;
-  background-color: white;
-  border-radius: 3px;
-  padding-left: 1em;
-  padding-top: 0.45em;
-
-  & > a {
-    text-decoration: none;
-  }
-  @media (max-width: 768px) {
-    width: 100%;
-    height: 25%;
-    padding-left: 0;
-    padding-right: 1em;
-    padding-top: 0.4em;
-  }
-`
 
 export const Logo = styled.img`
   display: none;

@@ -105,6 +105,9 @@ export const OnboardingTwoModal = styled.div`
   background-color: white;
   padding-left: 1em;
   border-radius: 3px;
+  -moz-box-shadow: 3px 3px 9px 3px rgba(135, 135, 135, 0.5);
+  -webkit-box-shadow: 3px 3px 9px 3px rgba(135, 135, 135, 0.5);
+  box-shadow: 3px 3px 9px 3px rgba(135, 135, 135, 0.5);
 `
 
 const bottomModal = css`
@@ -122,5 +125,52 @@ export const OnboardingThreeModal = styled.div`
   margin-bottom: 65px;
   width: 280px;
   height: 150px;
+  -moz-box-shadow: 3px -9px 9px 3px rgba(135, 135, 135, 0.5);
+  -webkit-box-shadow: 3px -9px 9px 3px rgba(135, 135, 135, 0.5);
+  box-shadow: 3px -9px 9px 3px rgba(135, 135, 135, 0.5);
   ${props => props.bottom && bottomModal}
+`
+export const LinksArea = styled.div`
+  display: flex;
+  height: 100%;
+  align-items: center;
+
+  & > a {
+    text-decoration: none;
+  }
+`
+export const OnboardingOneModal = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 20%;
+  width: 60%;
+  align-items: center;
+  background-color: white;
+  border-radius: 3px;
+  padding-left: 1em;
+  padding-top: 0.45em;
+  -moz-box-shadow: 3px 3px 9px 3px rgba(135, 135, 135, 0.5);
+  -webkit-box-shadow: 3px 3px 9px 3px rgba(135, 135, 135, 0.5);
+  box-shadow: 3px 3px 9px 3px rgba(135, 135, 135, 0.5);
+
+  & > a {
+    text-decoration: none;
+  }
+  @media (max-width: 768px) {
+    width: 100%;
+    height: 25%;
+    padding-left: 0;
+    padding-right: 1.85em;
+    padding-top: 0.45em;
+  }
+`
+
+export const Logo = styled.img`
+  display: none;
+
+  @media (min-width: 768px) {
+    display: block;
+    padding-left: 1em;
+  }
 `
