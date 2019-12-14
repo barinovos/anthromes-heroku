@@ -1,48 +1,23 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Wrapper, BigText, Bold, PageNumber, NumberText, Pagination, OnboardingThreeModal } from './Styled'
+import pin from '../../assets/Annotation_t.svg'
+import AbstractCard from './abstractCard'
 
-const OnboardingThree = ({ onClose, onBack, onNext }) => {
+const OnboardingThree = ({ onClose, onNext }) => {
   return (
-    <Wrapper>
-      <OnboardingThreeModal bottom>
-        <div
-          style={{
-            flexDirection: 'row',
-          }}
-        >
-          <BigText>
-            <Bold>Gallery:</Bold> Click here If you want to jump between each seperate sections
-            <PageNumber>
-              <NumberText>3</NumberText>
-            </PageNumber>
-            <Pagination onClick={onClose}>Done</Pagination>
-            <Pagination
-              onClick={() => {
-                onClose()
-                onBack()
-              }}
-            >
-              Back
-            </Pagination>
-            <Pagination
-              onClick={() => {
-                onNext()
-                onClose()
-              }}
-            >
-              Next
-            </Pagination>
-          </BigText>
-        </div>
-      </OnboardingThreeModal>
-    </Wrapper>
+    <AbstractCard
+      imgSrc={pin}
+      title="Annontation"
+      body="Annotations can be added anywhere on the canvas, click to learn about this area's inspiration, meaning, and related works."
+      onClose={onClose}
+      onNext={onNext}
+      steps="2 of 4 steps"
+    />
   )
 }
 
 OnboardingThree.propTypes = {
   onClose: PropTypes.func.isRequired,
-  onBack: PropTypes.func.isRequired,
   onNext: PropTypes.func.isRequired,
 }
 

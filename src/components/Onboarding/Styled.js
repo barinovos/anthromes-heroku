@@ -90,13 +90,17 @@ export const PageNumber = styled.p`
   height: 23px;
   border-radius: 50%;
 `
-export const Pagination = styled.span`
-  background: rgba(135, 135, 135, 0.2);
-  padding: 0.6em;
-  margin-right: 1em;
-  border-radius: 3px;
-  border: 1px solid gray;
+export const Pagination = styled.div`
+  background: rgb(86, 145, 210);
+  padding: 8px 15px 9px 13px;
+  border-radius: 4px;
   font-size: 0.7rem;
+  color: white;
+  height: 35px;
+  width: 64px;
+  margin-right: 15px;
+  font-size: 18px;
+  cursor: pointer;
 `
 export const OnboardingTwoModal = styled.div`
   z-index: 1111 !important;
@@ -139,8 +143,8 @@ export const OnboardingThreeModal = styled.div`
   background-color: white;
   border-radius: 3px;
   margin-bottom: 65px;
-  width: 280px;
-  height: 150px;
+  width: 400px;
+  height: 325.5px;
   -moz-box-shadow: 3px -9px 9px 3px rgba(135, 135, 135, 0.5);
   -webkit-box-shadow: 3px -9px 9px 3px rgba(135, 135, 135, 0.5);
   box-shadow: 3px -9px 9px 3px rgba(135, 135, 135, 0.5);
@@ -155,20 +159,21 @@ export const LinksArea = styled.div`
     text-decoration: none;
   }
 `
-export const OnboardingOneModal = styled.div`
+export const OnboardingModal = styled.div`
   position: fixed;
-  top: 0;
-  left: 0;
-  height: 20%;
-  width: 545px;
+  top: 50;
+  left: 50;
+  bottom: 50;
+  right: 50;
+  min-height: 150px;
+  width: 445px;
   align-items: center;
   background-color: white;
-  border-radius: 3px;
-  padding-left: 1em;
-  padding-top: 0.45em;
-  -moz-box-shadow: 3px 3px 9px 3px rgba(135, 135, 135, 0.5);
-  -webkit-box-shadow: 3px 3px 9px 3px rgba(135, 135, 135, 0.5);
-  box-shadow: 3px 3px 9px 3px rgba(135, 135, 135, 0.5);
+  border-radius: 8px;
+  padding-left: 24px;
+  padding-top: 21px;
+  z-index: 11111;
+  overflow: hidden;
 
   & > a {
     text-decoration: none;
@@ -177,7 +182,6 @@ export const OnboardingOneModal = styled.div`
     width: 100%;
     height: 25%;
     padding-left: 0;
-    padding-right: 1.85em;
     padding-top: 0.45em;
   }
   @media (max-width: 375px) {
@@ -185,14 +189,6 @@ export const OnboardingOneModal = styled.div`
   }
 `
 
-export const Logo = styled.img`
-  display: none;
-
-  @media (min-width: 768px) {
-    display: block;
-    padding-left: 1em;
-  }
-`
 export const Wizard = styled.img`
   position: absolute;
   left: 0;

@@ -1,50 +1,23 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Wrapper, BigText, Bold, PinIcon, PageNumber, NumberText, Pagination, OnboardingTwoModal } from './Styled'
-import pin from '../../assets/Annotation_t.svg'
+import AbstractCard from './abstractCard'
+import Archive from '../../assets/archive.svg'
 
-const OnboardingTwo = ({ onClose, onBack, onNext }) => {
+const OnboardingTwo = ({ onClose, onNext }) => {
   return (
-    <Wrapper>
-      <OnboardingTwoModal>
-        <div
-          style={{
-            flexDirection: 'row',
-          }}
-        >
-          <BigText>
-            <PinIcon src={pin} alt={''} style={{ padding: 2, border: '2px solid red' }} />
-            <Bold>Annotation:</Bold> click to see more detail about this area.
-            <PageNumber>
-              <NumberText>2</NumberText>
-            </PageNumber>
-            <Pagination onClick={onClose}>Skip</Pagination>
-            <Pagination
-              onClick={() => {
-                onClose()
-                onBack()
-              }}
-            >
-              Back
-            </Pagination>
-            <Pagination
-              onClick={() => {
-                onClose()
-                onNext()
-              }}
-            >
-              Next
-            </Pagination>
-          </BigText>
-        </div>
-      </OnboardingTwoModal>
-    </Wrapper>
+    <AbstractCard
+      imgSrc={Archive}
+      title="Archive"
+      body="Each section in paint.garden can have layers. Use the slider like an archive and discover how a picture has evolved."
+      onClose={onClose}
+      onNext={onNext}
+      steps="1 of 4 steps"
+    />
   )
 }
 
 OnboardingTwo.propTypes = {
   onClose: PropTypes.func.isRequired,
-  onBack: PropTypes.func.isRequired,
   onNext: PropTypes.func.isRequired,
 }
 

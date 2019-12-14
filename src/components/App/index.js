@@ -12,6 +12,7 @@ import OnboardingOne from '../Onboarding/onboarding1'
 import OnboardingTwo from '../Onboarding/onboarding2'
 import OnboardingThree from '../Onboarding/onboarding3'
 import OnboardingFour from '../Onboarding/onboarding4'
+import OnboardingFive from '../Onboarding/onboarding5'
 import Overlay from '../Onboarding/overlay'
 const { API_URL } = Constants
 
@@ -26,6 +27,7 @@ class App extends React.Component {
     showOnboardingTwo: false,
     showOnboardingThree: false,
     showOnboardingFour: false,
+    showOnboardingFive: false,
   }
 
   constructor(props) {
@@ -69,6 +71,7 @@ class App extends React.Component {
       showOnboardingTwo,
       showOnboardingThree,
       showOnboardingFour,
+      showOnboardingFive,
       showAbout,
       selectedSection,
       activePin,
@@ -103,9 +106,16 @@ class App extends React.Component {
           <OnboardingFour
             onClose={() => this.setState({ showOnboardingFour: false })}
             onBack={() => this.setState({ showOnboardingThree: true })}
+            onNext={() => this.setState({ showOnboardingFive: true })}
           />
         )}
-        {showOnboarding || showOnboardingTwo || showOnboardingFour ? (
+        {showOnboardingFive && (
+          <OnboardingFive
+            onClose={() => this.setState({ showOnboardingFive: false })}
+            onBack={() => this.setState({ showOnboardingThree: true })}
+          />
+        )}
+        {showOnboarding || showOnboardingTwo || showOnboardingFour || showOnboardingFive ? (
           <Overlay />
         ) : showOnboardingThree ? (
           <Overlay bottom />
