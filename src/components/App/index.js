@@ -90,33 +90,66 @@ class App extends React.Component {
         )}
         {showOnboardingTwo && (
           <>
-          <OnboardingTwo
-            onClose={() => this.setState({ showOnboardingTwo: false })}
-            onBack={() => this.setState({ showOnboarding: true })}
-            onNext={() => this.setState({ showOnboardingThree: true })}
-          />
-          <div style={{ position: 'fixed', top: '8%', left: '35%', zIndex: 9999, backgroundColor: 'white', width: 50, height: 50, transform: 'rotate(45deg)'}} />
+            <OnboardingTwo
+              onClose={() => this.setState({ showOnboardingTwo: false })}
+              onBack={() => this.setState({ showOnboarding: true })}
+              onNext={() => this.setState({ showOnboardingThree: true })}
+            />
+            <div
+              style={{
+                position: 'fixed',
+                top: '10%',
+                left: '35%',
+                zIndex: 9999,
+                backgroundColor: 'white',
+                width: 50,
+                height: 50,
+                transform: 'rotate(45deg)',
+              }}
+            />
           </>
         )}
         {showOnboardingThree && (
           <>
-          <OnboardingThree
-            onClose={() => this.setState({ showOnboardingThree: false })}
-            onBack={() => this.setState({ showOnboardingTwo: true })}
-            onNext={() => this.setState({ showOnboardingFour: true })}
-          />
-          <div style={{ position: 'fixed', top: '23%', left: '30%', zIndex: 9999, backgroundColor: 'white', width: 50, height: 50, transform: 'rotate(45deg)'}} />
-          <Sidebar />
+            <OnboardingThree
+              onClose={() => this.setState({ showOnboardingThree: false })}
+              onBack={() => this.setState({ showOnboardingTwo: true })}
+              onNext={() => this.setState({ showOnboardingFour: true })}
+            />
+            <div
+              style={{
+                position: 'fixed',
+                top: '23%',
+                left: '30%',
+                zIndex: 9999,
+                backgroundColor: 'white',
+                width: 50,
+                height: 50,
+                transform: 'rotate(45deg)',
+              }}
+            />
+            <Sidebar pin={{imgUrl: 'https://anth-api.herokuapp.com/uploads/1564312593584.jpg', headline: 'Reef', medium: 'Sardinia', description: 'Spring 2017'}} imgSrc={'https://anth-api.herokuapp.com/uploads/1564312593584.jpg'} zIndex={'99999'} />
           </>
         )}
         {showOnboardingFour && (
           <>
-          <OnboardingFour
-            onClose={() => this.setState({ showOnboardingFour: false })}
-            onBack={() => this.setState({ showOnboardingThree: true })}
-            onNext={() => this.setState({ showOnboardingFive: true })}
-          />
-          <div style={{ position: 'fixed', top: '78%', left: '30%', zIndex: 9999, backgroundColor: 'rgb(243,244,247)', width: 50, height: 50, transform: 'rotate(45deg)'}} />
+            <OnboardingFour
+              onClose={() => this.setState({ showOnboardingFour: false })}
+              onBack={() => this.setState({ showOnboardingThree: true })}
+              onNext={() => this.setState({ showOnboardingFive: true })}
+            />
+            <div
+              style={{
+                position: 'fixed',
+                top: '78%',
+                left: '30%',
+                zIndex: 9999,
+                backgroundColor: 'rgb(243,244,247)',
+                width: 50,
+                height: 50,
+                transform: 'rotate(45deg)',
+              }}
+            />
           </>
         )}
         {showOnboardingFive && (
@@ -125,10 +158,12 @@ class App extends React.Component {
             onBack={() => this.setState({ showOnboardingThree: true })}
           />
         )}
-        {showOnboarding || showOnboardingTwo || showOnboardingThree || showOnboardingFive ? (
+        {showOnboarding || showOnboardingThree || showOnboardingFive ? (
           <Overlay />
         ) : showOnboardingFour ? (
           <Overlay bottom />
+        ) : showOnboardingTwo ? (
+          <Overlay top />
         ) : null}
         <Toolbar
           activeSection={selectedSection}

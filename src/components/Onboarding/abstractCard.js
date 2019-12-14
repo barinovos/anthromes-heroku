@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import '../../assets/fonts/fonts.css'
+
 const AbstractCard = ({ onClose, onNext, title, body, imgSrc, steps, button, top, left }) => {
   return (
     <div
@@ -32,7 +34,7 @@ const AbstractCard = ({ onClose, onNext, title, body, imgSrc, steps, button, top
             position: 'absolute',
           }}
         >
-          <img src={imgSrc} width={40} height={40} alt="Paint.garden" />
+          <img src={imgSrc} width={40} height={40} fill='black' alt="Paint.garden" />
         </div>
         <div
           style={{
@@ -40,9 +42,9 @@ const AbstractCard = ({ onClose, onNext, title, body, imgSrc, steps, button, top
             flex: '0.2 0.2 100%',
           }}
         >
-          <p style={{ fontSize: 14 }}>{title}</p>
+          <p style={{ fontSize: 14, fontFamily: 'Proxima Nova Semibold', marginTop: -5, marginBottom: 5, }}>{title}</p>
           <div style={{ flexBasis: '100%', height: 0 }} />
-          <p style={{ fontSize: 14 }}>{body}</p>
+          <p style={{ fontSize: 14, fontFamily: 'Proxima Nova Light', }}>{body}</p>
         </div>
         <div style={{ flexBasis: '100%', height: 0 }} />
         <div
@@ -61,7 +63,7 @@ const AbstractCard = ({ onClose, onNext, title, body, imgSrc, steps, button, top
             borderBottomRightRadius: '9px',
           }}
         >
-          <div style={{ display: 'flex', marginRight: '20px', paddingTop: '7px', justifyContent: 'flex-start' }}>
+          <div style={{ display: 'flex', marginRight: '20px', paddingTop: '7px', fontFamily: 'Proxima Nova Semibold', }}>
             <p style={{ color: 'lightGray', fontSize: 15, cursor: 'pointer' }}>{steps}</p>
           </div>
           <div style={{ marginRight: '20px', paddingTop: '7px' }}>

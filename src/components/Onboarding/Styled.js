@@ -1,4 +1,6 @@
 import styled, { css } from 'styled-components'
+import '../../assets/fonts/fonts.css'
+
 
 export const Wrapper = styled.div`
   position: fixed;
@@ -68,7 +70,7 @@ const bottomOverlay = css`
 
 export const OverlayDiv = styled.div`
   position: fixed;
-  top: 0;
+  top: ${props => props.top ? '60px' : 0}
   bottom: 0;
   width: 100%;
   overflow: hidden;
@@ -90,14 +92,4 @@ export const LinksArea = styled.div`
   & > a {
     text-decoration: none;
   }
-`
-
-
-export const Wizard = styled.img`
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 60%;
-  margin-left: auto;
-  margin-right: auto;
 `

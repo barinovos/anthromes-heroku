@@ -10,11 +10,11 @@ const OnboardingFive = ({ onClose, onNext }) => {
       title="Scroll & Zoom"
       body="Paint.garden is like one big map. Scroll anywhere and zoom in or out using the magnifying icon."
       onClose={onClose}
-      onNext={onNext}
+      onNext={onClose}
       steps="4 of 4 steps"
       button="Start exploring"
       top="25%"
-      left="40%"
+      left="25%"
     />
   )
 }
