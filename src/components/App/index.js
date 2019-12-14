@@ -89,25 +89,35 @@ class App extends React.Component {
           ></OnboardingOne>
         )}
         {showOnboardingTwo && (
+          <>
           <OnboardingTwo
             onClose={() => this.setState({ showOnboardingTwo: false })}
             onBack={() => this.setState({ showOnboarding: true })}
             onNext={() => this.setState({ showOnboardingThree: true })}
           />
+          <div style={{ position: 'fixed', top: '8%', left: '35%', zIndex: 9999, backgroundColor: 'white', width: 50, height: 50, transform: 'rotate(45deg)'}} />
+          </>
         )}
         {showOnboardingThree && (
+          <>
           <OnboardingThree
             onClose={() => this.setState({ showOnboardingThree: false })}
             onBack={() => this.setState({ showOnboardingTwo: true })}
             onNext={() => this.setState({ showOnboardingFour: true })}
           />
+          <div style={{ position: 'fixed', top: '23%', left: '30%', zIndex: 9999, backgroundColor: 'white', width: 50, height: 50, transform: 'rotate(45deg)'}} />
+          <Sidebar />
+          </>
         )}
         {showOnboardingFour && (
+          <>
           <OnboardingFour
             onClose={() => this.setState({ showOnboardingFour: false })}
             onBack={() => this.setState({ showOnboardingThree: true })}
             onNext={() => this.setState({ showOnboardingFive: true })}
           />
+          <div style={{ position: 'fixed', top: '78%', left: '30%', zIndex: 9999, backgroundColor: 'rgb(243,244,247)', width: 50, height: 50, transform: 'rotate(45deg)'}} />
+          </>
         )}
         {showOnboardingFive && (
           <OnboardingFive
@@ -115,9 +125,9 @@ class App extends React.Component {
             onBack={() => this.setState({ showOnboardingThree: true })}
           />
         )}
-        {showOnboarding || showOnboardingTwo || showOnboardingFour || showOnboardingFive ? (
+        {showOnboarding || showOnboardingTwo || showOnboardingThree || showOnboardingFive ? (
           <Overlay />
-        ) : showOnboardingThree ? (
+        ) : showOnboardingFour ? (
           <Overlay bottom />
         ) : null}
         <Toolbar

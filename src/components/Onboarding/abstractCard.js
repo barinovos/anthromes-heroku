@@ -1,10 +1,23 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Pagination, OnboardingModal } from './Styled'
 
-const AbstractCard = ({ onClose, onNext, title, body, imgSrc, steps }) => {
+const AbstractCard = ({ onClose, onNext, title, body, imgSrc, steps, button, top, left }) => {
   return (
-    <OnboardingModal>
+    <div
+      style={{
+        position: 'absolute',
+        top: `${top}`,
+        left: `${left}`,
+        maxHeight: 170,
+        width: 445,
+        backgroundColor: 'white',
+        borderRadius: 8,
+        paddingLeft: 24,
+        paddingTop: 21,
+        zIndex: 11111,
+        overflow: 'hidden',
+      }}
+    >
       <div
         style={{
           display: 'flex',
@@ -56,17 +69,27 @@ const AbstractCard = ({ onClose, onNext, title, body, imgSrc, steps }) => {
               Skip the tour
             </p>
           </div>
-          <Pagination
+          <div
+            style={{
+              background: 'rgb(86, 145, 210)',
+              padding: '8px 15px 9px 13px',
+              borderRadius: 4,
+              fontSize: 15,
+              color: 'white',
+              height: 38,
+              marginRight: 15,
+              cursor: 'pointer',
+            }}
             onClick={() => {
               onClose()
               onNext()
             }}
           >
-            Next
-          </Pagination>
+            {button}
+          </div>
         </div>
       </div>
-    </OnboardingModal>
+    </div>
   )
 }
 

@@ -12,6 +12,9 @@ const OnboardingThree = ({ onClose, onNext }) => {
       onClose={onClose}
       onNext={onNext}
       steps="3 of 4 steps"
+      button="Next"
+      top="60%"
+      left="25%"
     />
   )
 }

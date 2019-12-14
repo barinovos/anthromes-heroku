@@ -12,6 +12,9 @@ const OnboardingOne = ({ onClose, onNext }) => {
       website features."
       onClose={onClose}
       onNext={onNext}
+      button="Next"
+      top="25%"
+      left="25%"
     />
   )
 }

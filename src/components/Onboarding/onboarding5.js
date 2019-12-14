@@ -12,6 +12,9 @@ const OnboardingFive = ({ onClose, onNext }) => {
       onClose={onClose}
       onNext={onNext}
       steps="4 of 4 steps"
+      button="Start exploring"
+      top="25%"
+      left="40%"
     />
   )
 }
