@@ -77,28 +77,26 @@ class App extends React.Component {
       activePin,
     } = this.state
 
+    const width = document.documentElement.clientWidth
+
     return (
       <Fragment>
         {showOnboarding && (
           <OnboardingOne
-            activeSection={selectedSection}
-            activeImageIndex={activeImageIndexes[selectedSection.id]}
-            onChangeTimeline={this.onChangeActiveImageIndex}
             onClose={() => this.setState({ showOnboarding: false })}
             onNext={() => this.setState({ showOnboardingTwo: true })}
           ></OnboardingOne>
         )}
-        {showOnboardingTwo && (
+        {showOnboardingTwo && width > 740 ? (
           <>
             <OnboardingTwo
               onClose={() => this.setState({ showOnboardingTwo: false })}
-              onBack={() => this.setState({ showOnboarding: true })}
               onNext={() => this.setState({ showOnboardingThree: true })}
             />
             <div
               style={{
                 position: 'fixed',
-                top: '10%',
+                top: '11%',
                 left: '35%',
                 zIndex: 9999,
                 backgroundColor: 'white',
@@ -108,12 +106,16 @@ class App extends React.Component {
               }}
             />
           </>
-        )}
-        {showOnboardingThree && (
+        ) : showOnboardingTwo ? (
+          <OnboardingTwo
+            onClose={() => this.setState({ showOnboardingTwo: false })}
+            onNext={() => this.setState({ showOnboardingThree: true })}
+          />
+        ) : null}
+        {showOnboardingThree && width > 740 ? (
           <>
             <OnboardingThree
               onClose={() => this.setState({ showOnboardingThree: false })}
-              onBack={() => this.setState({ showOnboardingTwo: true })}
               onNext={() => this.setState({ showOnboardingFour: true })}
             />
             <div
@@ -128,14 +130,27 @@ class App extends React.Component {
                 transform: 'rotate(45deg)',
               }}
             />
-            <Sidebar pin={{imgUrl: 'https://anth-api.herokuapp.com/uploads/1564312593584.jpg', headline: 'Reef', medium: 'Sardinia', description: 'Spring 2017'}} imgSrc={'https://anth-api.herokuapp.com/uploads/1564312593584.jpg'} zIndex={'99999'} />
+            <Sidebar
+              pin={{
+                imgUrl: 'https://anth-api.herokuapp.com/uploads/1564312593584.jpg',
+                headline: 'Reef',
+                medium: 'Sardinia',
+                description: 'Spring 2017',
+              }}
+              imgSrc={'https://anth-api.herokuapp.com/uploads/1564312593584.jpg'}
+              zIndex={'99999'}
+            />
           </>
-        )}
-        {showOnboardingFour && (
+        ) : showOnboardingThree ? (
+          <OnboardingThree
+            onClose={() => this.setState({ showOnboardingThree: false })}
+            onNext={() => this.setState({ showOnboardingFour: true })}
+          />
+        ) : null}
+        {showOnboardingFour && width > 740 ? (
           <>
             <OnboardingFour
               onClose={() => this.setState({ showOnboardingFour: false })}
-              onBack={() => this.setState({ showOnboardingThree: true })}
               onNext={() => this.setState({ showOnboardingFive: true })}
             />
             <div
@@ -151,11 +166,16 @@ class App extends React.Component {
               }}
             />
           </>
-        )}
+        ) : showOnboardingFour ? (
+          <OnboardingFour
+            onClose={() => this.setState({ showOnboardingFour: false })}
+            onNext={() => this.setState({ showOnboardingFive: true })}
+          />
+        ) : null}
         {showOnboardingFive && (
           <OnboardingFive
             onClose={() => this.setState({ showOnboardingFive: false })}
-            onBack={() => this.setState({ showOnboardingThree: true })}
+            onNext={() => this.setState({ showOnboardingFive: false })}
           />
         )}
         {showOnboarding || showOnboardingThree || showOnboardingFive ? (
@@ -180,7 +200,6 @@ class App extends React.Component {
             selectedSectionId={selectedSection.id}
             activeImageIndexes={activeImageIndexes}
             onPinSelect={activePin => this.setState({ activePin })}
-            onBoarding={this.state.showOnboardingTwo}
           />
           {showAbout && <About onClose={() => this.setState({ showAbout: false })} />}
 

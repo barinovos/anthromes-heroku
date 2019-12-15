@@ -1,7 +1,6 @@
 import styled, { css } from 'styled-components'
 import '../../assets/fonts/fonts.css'
 
-
 export const Wrapper = styled.div`
   position: fixed;
   top: 0;
@@ -64,13 +63,10 @@ export const PinIcon = styled.img`
   position: relative;
   top: 0.25em;
 `
-const bottomOverlay = css`
-  margin-bottom: 65px;
-`
 
 export const OverlayDiv = styled.div`
   position: fixed;
-  top: ${props => props.top ? '60px' : 0}
+  top: ${props => (props.top ? '60px' : 0)};
   bottom: 0;
   width: 100%;
   overflow: hidden;
@@ -81,7 +77,7 @@ export const OverlayDiv = styled.div`
   justify-content: center;
   flex-direction: column;
   padding: 0 1.5em;
-  ${props => props.bottom && bottomOverlay}
+  margin-bottom: ${props => (props.bottom ? '65px' : 0)};
 `
 
 export const LinksArea = styled.div`
