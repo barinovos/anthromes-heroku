@@ -11,7 +11,7 @@ const AbstractCard = ({ onClose, onNext, title, body, imgSrc, steps, button, top
         position: 'absolute',
         top: `${width > '740' ? top : '250px'}`,
         left: `${width > '740' ? left : 0}`,
-        maxHeight: 170,
+        maxHeight: 200,
         width: `${width > '740' ? '445px' : '100%'}`,
         backgroundColor: 'white',
         borderRadius: `${width > '740' ? '8px' : 0}`,
@@ -26,7 +26,7 @@ const AbstractCard = ({ onClose, onNext, title, body, imgSrc, steps, button, top
           display: 'flex',
           flexDirection: 'row',
           width: '100%',
-          height: 150,
+          height: 165,
           paddingRight: 10,
         }}
       >
@@ -39,7 +39,7 @@ const AbstractCard = ({ onClose, onNext, title, body, imgSrc, steps, button, top
         </div>
         <div
           style={{
-            marginLeft: 50,
+            marginLeft: 60,
             flex: '0.2 0.2 100%',
           }}
         >
@@ -57,23 +57,38 @@ const AbstractCard = ({ onClose, onNext, title, body, imgSrc, steps, button, top
             display: 'flex',
             flexDirection: 'row',
             width: '100%',
-            height: '46px',
-            paddingTop: '5px',
-            justifyContent: 'flex-end',
-            borderBottomLeftRadius: '9px',
-            borderBottomRightRadius: '9px',
+            height: '58px',
+            paddingTop: '10px',
+            justifyContent: 'space-between',
           }}
         >
-          <div style={{ display: 'flex', marginRight: '20px', paddingTop: '7px', fontFamily: 'Proxima Nova Semibold' }}>
+          <div
+            style={{
+              display: 'flex',
+              marginLeft: '20px',
+              paddingTop: '7px',
+              fontFamily: 'Proxima Nova Semibold',
+              justifyContent: 'flex-start',
+            }}
+          >
             <p style={{ color: 'lightGray', fontSize: 15, cursor: 'pointer' }}>{steps}</p>
           </div>
-          <div style={{ marginRight: '20px', paddingTop: '7px' }}>
+          <div
+            style={{
+              display: 'flex',
+              marginRight: '20px',
+              marginLeft: '40px',
+              paddingTop: '7px',
+              justifyContent: 'flex-end',
+            }}
+          >
             <p onClick={onClose} style={{ color: 'lightGray', fontSize: 15, cursor: 'pointer' }}>
               Skip the tour
             </p>
           </div>
           <div
             style={{
+              display: 'flex',
               background: 'rgb(86, 145, 210)',
               padding: '8px 15px 9px 13px',
               borderRadius: 4,
@@ -82,6 +97,7 @@ const AbstractCard = ({ onClose, onNext, title, body, imgSrc, steps, button, top
               height: 38,
               marginRight: 15,
               cursor: 'pointer',
+              justifyContent: 'flex-end',
             }}
             onClick={() => {
               onClose()

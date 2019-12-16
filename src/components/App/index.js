@@ -87,48 +87,17 @@ class App extends React.Component {
             onNext={() => this.setState({ showOnboardingTwo: true })}
           ></OnboardingOne>
         )}
-        {showOnboardingTwo && width > 740 ? (
-          <>
-            <OnboardingTwo
-              onClose={() => this.setState({ showOnboardingTwo: false })}
-              onNext={() => this.setState({ showOnboardingThree: true })}
-            />
-            <div
-              style={{
-                position: 'fixed',
-                top: '11%',
-                left: '35%',
-                zIndex: 9999,
-                backgroundColor: 'white',
-                width: 50,
-                height: 50,
-                transform: 'rotate(45deg)',
-              }}
-            />
-          </>
-        ) : showOnboardingTwo ? (
+        {showOnboardingTwo && (
           <OnboardingTwo
             onClose={() => this.setState({ showOnboardingTwo: false })}
             onNext={() => this.setState({ showOnboardingThree: true })}
           />
-        ) : null}
+        )}
         {showOnboardingThree && width > 740 ? (
           <>
             <OnboardingThree
               onClose={() => this.setState({ showOnboardingThree: false })}
               onNext={() => this.setState({ showOnboardingFour: true })}
-            />
-            <div
-              style={{
-                position: 'fixed',
-                top: '23%',
-                left: '30%',
-                zIndex: 9999,
-                backgroundColor: 'white',
-                width: 50,
-                height: 50,
-                transform: 'rotate(45deg)',
-              }}
             />
             <Sidebar
               pin={{
@@ -147,31 +116,12 @@ class App extends React.Component {
             onNext={() => this.setState({ showOnboardingFour: true })}
           />
         ) : null}
-        {showOnboardingFour && width > 740 ? (
-          <>
-            <OnboardingFour
-              onClose={() => this.setState({ showOnboardingFour: false })}
-              onNext={() => this.setState({ showOnboardingFive: true })}
-            />
-            <div
-              style={{
-                position: 'fixed',
-                top: '78%',
-                left: '30%',
-                zIndex: 9999,
-                backgroundColor: 'rgb(243,244,247)',
-                width: 50,
-                height: 50,
-                transform: 'rotate(45deg)',
-              }}
-            />
-          </>
-        ) : showOnboardingFour ? (
+        {showOnboardingFour && (
           <OnboardingFour
             onClose={() => this.setState({ showOnboardingFour: false })}
             onNext={() => this.setState({ showOnboardingFive: true })}
           />
-        ) : null}
+        )}
         {showOnboardingFive && (
           <OnboardingFive
             onClose={() => this.setState({ showOnboardingFive: false })}
