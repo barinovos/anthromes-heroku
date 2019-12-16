@@ -5,9 +5,16 @@ import { LinkText, MobileView, DesktopView, Slider } from '../Common/Styled'
 import MenuButton from './MenuButton'
 import LogoSrc from '../../assets/logo.svg'
 
-const Toolbar = ({ activeSection = {}, activeImageIndex, onShowOnboarding, onShowAbout, onChangeTimeline }) => (
+const Toolbar = ({
+  activeSection = {},
+  activeImageIndex,
+  onShowOnboarding,
+  onShowAbout,
+  onChangeTimeline,
+  showOnboardingTwo,
+}) => (
   <Wrapper>
-    <LinksArea>
+    <LinksArea style={{ zIndex: `${showOnboardingTwo ? 99999 : 0}` }}>
       <Logo src={LogoSrc} alt="Paint.garden" />
       {activeSection.id && (
         <LinkText bold flexBasis="50%">
@@ -49,6 +56,7 @@ Toolbar.propTypes = {
   onShowOnboarding: PropTypes.func,
   onShowAbout: PropTypes.func,
   onChangeTimeline: PropTypes.func,
+  showOnboardingTwo: PropTypes.bool,
 }
 
 export default Toolbar

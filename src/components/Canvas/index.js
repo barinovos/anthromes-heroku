@@ -9,7 +9,7 @@ import { getCanvasItems, getSectionById, calcCanvasSize } from '../../utils/dbHe
 import { getCurrentZoomPercentage } from '../../utils/calcZoom'
 import { Area } from './Styled'
 
-const Canvas = ({ db, onSectionSelect, selectedSectionId, onPinSelect, activeImageIndexes, onBoarding }) => {
+const Canvas = ({ db, onSectionSelect, selectedSectionId, onPinSelect, activeImageIndexes, showOnboardingFive }) => {
   const [zoom, setZoom] = useState(0)
   if (!db) return <div>Loading</div>
 
@@ -32,7 +32,12 @@ const Canvas = ({ db, onSectionSelect, selectedSectionId, onPinSelect, activeIma
         />
       ))}
       <Pins pins={db.pins} zoomLevel={zoom} onPinSelect={onPinSelect} />
-      <Zoom zoomIn={onZoomIn} zoomOut={onZoomOut} value={getCurrentZoomPercentage(zoom)} />
+      <Zoom
+        zoomIn={onZoomIn}
+        zoomOut={onZoomOut}
+        value={getCurrentZoomPercentage(zoom)}
+        showOnboardingFive={showOnboardingFive}
+      />
       <BottomPanel items={items} onSelect={onSectionSelectFromPanel} selectedId={selectedSectionId} />
     </Area>
   )
@@ -44,7 +49,7 @@ Canvas.propTypes = {
   activeImageIndexes: PropTypes.object,
   onSectionSelect: PropTypes.func,
   onPinSelect: PropTypes.func,
-  onBoarding: PropTypes.bool,
+  showOnboardingFive: PropTypes.bool,
 }
 
 export default Canvas

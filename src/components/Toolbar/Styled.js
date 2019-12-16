@@ -18,6 +18,7 @@ export const LinksArea = styled.div`
   display: flex;
   height: 100%;
   align-items: center;
+  background: white;
 
   & > a {
     text-decoration: none;

@@ -128,12 +128,10 @@ class App extends React.Component {
             onNext={() => this.setState({ showOnboardingFive: false })}
           />
         )}
-        {showOnboarding || showOnboardingThree || showOnboardingFive ? (
+        {showOnboarding || showOnboardingThree || showOnboardingFive || showOnboardingTwo ? (
           <Overlay />
         ) : showOnboardingFour ? (
           <Overlay bottom />
-        ) : showOnboardingTwo ? (
-          <Overlay top />
         ) : null}
         <Toolbar
           activeSection={selectedSection}
@@ -141,7 +139,7 @@ class App extends React.Component {
           onShowOnboarding={() => this.setState({ showOnboarding: true })}
           onShowAbout={() => this.setState({ showAbout: true })}
           onChangeTimeline={this.onChangeActiveImageIndex}
-          onBoarding={this.state.showOnboarding}
+          showOnboardingTwo={this.state.showOnboardingTwo}
         />
         <MainArea ref={this.areaRef}>
           <Canvas
@@ -150,6 +148,7 @@ class App extends React.Component {
             selectedSectionId={selectedSection.id}
             activeImageIndexes={activeImageIndexes}
             onPinSelect={activePin => this.setState({ activePin })}
+            showOnboardingFive={this.state.showOnboardingFive}
           />
           {showAbout && <About onClose={() => this.setState({ showAbout: false })} />}
 
