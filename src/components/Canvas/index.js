@@ -14,6 +14,8 @@ const Canvas = ({ db, onSectionSelect, selectedSectionId, onPinSelect, activeIma
   if (!db) return <div>Loading</div>
 
   const items = getCanvasItems(db, activeImageIndexes)
+  if (!items || !items.length) return <div>Sorry, there is no data for this project</div>
+
   const onZoomOut = () => zoom > -constants.MAX_ZOOM_LEVEL && setZoom(zoom - 1)
   const onZoomIn = () => zoom < constants.MAX_ZOOM_LEVEL && setZoom(zoom + 1)
   const onSectionSelectFromCanvas = sectionId => onSectionSelect(getSectionById(db, sectionId))

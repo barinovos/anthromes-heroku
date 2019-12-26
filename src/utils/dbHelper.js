@@ -1,18 +1,17 @@
-import api from './api'
+// import api from './api'
 import { calcSizeWithZoom } from './calcZoom'
 
 export const getCanvasItems = (db, activeImageIndexes) => {
   const images = db.images
   return db.sections
     .filter(s => Boolean(s.canvas))
-    .map(({ id, imageIds, canvas }) => ({
+    .map(({ id, imageIds, width, height }) => ({
       id,
-      url: api.getImageUrl(
-        images.find(
-          im => im.id === imageIds[activeImageIndexes[id] !== undefined ? activeImageIndexes[id] : imageIds.length - 1],
-        ).filePath,
-      ),
-      ...canvas,
+      url: images.find(
+        im => im.id === imageIds[activeImageIndexes[id] !== undefined ? activeImageIndexes[id] : imageIds.length - 1],
+      ).url,
+      width,
+      height,
     }))
 }
 
